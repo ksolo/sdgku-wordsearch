@@ -1,4 +1,4 @@
-import {beforeEach, describe, test, expect} from "@jest/globals"
+import {describe, test, expect} from "@jest/globals"
 
 import wordsearch from './wordsearch'
 
@@ -14,8 +14,23 @@ const board = [
 ]
 
 describe("wordsearch.horizontal", () => {
-  test("returns true when word is contained in a row", () => {
-    const result = wordsearch.horizontal(board, "word");
+  test("returns true when word is contained in a rows", () => {
+    const result = wordsearch.horizontal(board, "unix")
     expect(result).toBe(true);
+  })
+
+  test("returns true when word is contained backwards in rows", () => {
+    const result = wordsearch.horizontal(board, "xinu")
+    expect(result).toBe(true)
+  })
+
+  test("returns false when word is not in the rows", () => {
+    const result = wordsearch.horizontal(board, "foobar")
+    expect(result).toBe(false)
+  })
+
+  test("returns true when word is in columns", () => {
+    const result = wordsearch.vertical(board, "audio")
+    expect(result).toBe(true)
   })
 })
